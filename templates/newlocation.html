@@ -1,0 +1,100 @@
+{% extends 'base.html'%} {% block content %}
+
+<h1>Create new Alt_location</h1>
+
+<form class="was-validated" action="{{ url_for('new_location') }}" method="POST">
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">Name of new Alt_location</label>
+            <input type="text" class="form-control is-valid" id="name" placeholder="New Alt_location" value="name" name="name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">Short address</label>
+            <input type="text" class="form-control is-valid" id="address" placeholder="Address" value="address" name="address" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <select class="custom-select" name="region" required>
+      <option value="">Which region is it in?</option>
+      <option value="North York">North York</option>
+      <option value="York">York</option>
+      <option value="Old Toronto">Old Toronto</option>
+      <option value="Etobicoke">Etobicoke</option>
+      <option value="East York">East York</option>
+      <option value="Scarborough">Scarborough</option>
+    </select>
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    <div class="form-group">
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="wifi" name="wifi">
+            <label class="custom-control-label" for="wifi">Wifi</label>
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="plugs" name="plugs">
+            <label class="custom-control-label" for="plugs">Plugs</label>
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="drinks" name="drinks">
+            <label class="custom-control-label" for="drinks">Drinks</label>
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="pets_allowed" name="pets_allowed">
+            <label class="custom-control-label" for="pets_allowed">Pets Allowed</label>
+        </div>
+        <div class="invalid-feedback">Example invalid feedback text</div>
+    </div>
+
+    <div class="form-group">
+        <select class="custom-select" name="category">
+      <option value="">What kind of space is it?</option>
+      <option value="cafe">Cafe</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="library">Library</option>
+      <option value="community space">Community Area</option>
+    </select>
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    <div class="form-group">
+        <select class="custom-select" name="best_suited">
+      <option value="">What kind of work is it best for?</option>
+      <option value="loud conversation">Loud conversation</option>
+      <option value="big groups">Big groups</option>
+      <option value="quiet work">Quiet work</option>
+      <option value="solo work">Solo work</option>
+    </select>
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" name="photos">
+        <label class="custom-file-label" for="validatedCustomFile">Upload a photo...</label>
+        <div class="invalid-feedback">Hmm... not the file type we're after.. try again?</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="validationTextarea">Please add a really descriptive description- itll help our users get a good idea of what the place is like!</label>
+        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" name="description"></textarea>
+        <div class="invalid-feedback">
+            Please enter a descripton in the box above.
+        </div>
+    </div>
+    
+
+    <button class="btn btn-dark" type="submit" >Submit form</button>
+
+</form>
+
+{% endblock %}
