@@ -26,30 +26,12 @@ def view_all():
 def location():
     return render_template("location.html")
    
-"""show all records in a grid - user can then filter by category etc"""    
-@app.route('/show_results')
-def show_results():
-    return render_template('searchresults.html')
-
+"""show the individual record - pulls data from DB based on _id"""
 @app.route('/view_location/<location_id>')
 def view_location(location_id):
     single_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
     all_regions = mongo.db.regions.find()
     return render_template('location.html', location=single_location, region=all_regions)
-    
-    
-@app.route('/edit_task/<task_id>')
-def edit_task(task_id):
-    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    all_catergories = mongo.db.categories.find()
-    return render_template('edittask.html', task=the_task, categories=all_catergories)
-    
-    
-    
-    
-    
-    
-    
     
 """add a new record for location - opens a form"""    
 @app.route('/add_new')
@@ -63,7 +45,19 @@ def new_location():
     locations = mongo.db.locations
     locations.insert_one(request.form.to_dict())
     return redirect(url_for('landing_page'))
+    
+"""deletes the location and redirects to list of all"""
+@app.route('/delete_location/<location_id>')
+def delete_location(location_id):
+    mongo.db.locations.remove({'_id': ObjectId(location_id)})
+    return redirect(url_for('view_all'))
 
+"""edit location - _id from DB"""
+@app.route('/edit_location/<location_id>')
+def edit_location(location_id):
+    single_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    all_regions = mongo.db.regions.find()
+    return render_template('editlocation.html', location=single_location, region=all_regions)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
