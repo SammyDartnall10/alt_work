@@ -5,16 +5,13 @@
 
 
 
-{% for location in locations %}
+{% for location in location %}
 <div class="row">
-    
-     
     <div class="col">
-        <h2><a href="{{url_for('view_location', location_id=locations._id)}}">{{location.name}}</a></h2>
+        <h2><a href="{{url_for('view_location', location_id=location._id)}}">{{location.name}}</a></h2>
        
     </div>
 </div>
-
 
 <div class="row">
     <div class="col-12 col-md-6">
@@ -28,9 +25,4 @@
         </h3>{{location.rating}}</h3>
     </div>
 </div>
-
-
-
-
-
 {% endfor %} {% endblock %}
