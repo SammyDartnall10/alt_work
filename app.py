@@ -20,7 +20,8 @@ def landing_page():
 @app.route('/view_all')
 def view_all():
     return render_template("viewall.html",
-    location=mongo.db.locations.find())
+    location=mongo.db.locations.find(),
+    loc_type = mongo.db.location_type.find())
     
 @app.route('/location')
 def location():
@@ -37,7 +38,9 @@ def view_location(location_id):
 @app.route('/add_new')
 def add_new():
     return render_template('newlocation.html',
-    regions=mongo.db.region.find())
+    regions=mongo.db.region.find(),
+    suited=mongo.db.best_suited.find(),
+    loc_type=mongo.db.location_type.find())
     
 """form thats opened when /add_new called""" 
 @app.route('/new_location', methods=['POST'])
@@ -55,9 +58,43 @@ def delete_location(location_id):
 """edit location - _id from DB"""
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
-    single_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    all_regions = mongo.db.regions.find()
-    return render_template('editlocation.html', location=single_location, region=all_regions)
+    location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    regions = mongo.db.region.find()
+    loc_type = mongo.db.location_type.find()
+    suited=mongo.db.best_suited.find()
+    return render_template('editlocation.html', location=location, regions=regions, loc_type=loc_type, suited=suited)
+
+@app.route('/update_location/<location_id>', methods=["POST"])
+def update_location(location_id):
+    location = mongo.db.locations
+    location.update( {'_id': ObjectId(location_id)},
+    {
+        'name':request.form.get('name'),
+        'address':request.form.get('address'),
+        'region':request.form.get('region'),
+        'category':request.form.get('category'),
+        'best_suited':request.form.get('best_suited'),
+        'wifi':request.form.get('wifi'),
+        'plugs':request.form.get('plugs'),
+        'drinks':request.form.get('plugs'),
+        'pets_allowed':request.form.get('pets_allowed'),
+        'offers':request.form.get('offers'),
+        'photos':request.form.get('photos'),
+        'rating': int(request.form['rating']),
+        'description':request.form.get('description')
+    })
+    return redirect(url_for('view_all'))
+
+def cat_summary(loc_type):
+    locations = {}
+    try: 
+        locations = [
+            location for location in mongo.db.location.find()
+            .limit(4)]
+    except: 
+        return ('Whoops, no results!')
+
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
