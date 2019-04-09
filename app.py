@@ -2,6 +2,8 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
+from bson.json_util import dumps
+from ast import literal_eval
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'projectThree'
@@ -19,10 +21,64 @@ def landing_page():
 """show all records in a grid - user can then filter by category etc"""     
 @app.route('/view_all')
 def view_all():
+    summary = get_categories()
     return render_template("viewall.html",
-    location=mongo.db.locations.find(),
-    loc_type = mongo.db.location_type.find())
+        location = mongo.db.locations.find(),
+        loc_type = mongo.db.location_type.find(),
+        region = mongo.db.region.find(),
+        summary = summary)
+  
+def get_categories():
+    locations = {}
+    try:
+        # Query recipes collection and return ordered by _id descending
+        locations = [location for location in mongo.db.locations.find( { 'category': "cafe" } )]
+    except:
+        return print("error finding locations")
+
+    if locations:
+        # return three locations
+        return locations
+        
+    return 
+
+
+def get_locations():
+    loc_types = {}
+    summary = {}
+    selection = {}
+   
+    try:
+        selection = dumps(mongo.db.location_type.find())
+        print(type(selection))
+        print (selection)
+        loc_types = selection
+        print (loc_types)
+   
     
+        [{"_id": {"$oid": "5c9bd0851c9d44000016fda1"}, "loc_type": "cafe"},
+        {"_id": {"$oid": "5c9bd09a1c9d44000016fda2"}, "loc_type": "restaurant"}, 
+        {"_id": {"$oid": "5c9bd0b21c9d44000016fda3"}, "loc_type": "library"}, 
+        {"_id": {"$oid": "5c9bd0c61c9d44000016fda4"}, "loc_type": "community space"}]
+        
+    except:
+        print("error finding locations in step one")
+    
+        for locations in loc_types:
+            try:
+                summary = dumps(mongo.db.locations.find( { "loc_type": "loc_type" } ))
+                print("found summary")
+                return summary
+        
+            except:
+                return print("error finding locations")
+
+            if locations:
+                # return three locations
+                return locations
+
+get_locations()
+  
 @app.route('/location')
 def location():
     return render_template("location.html")
@@ -85,15 +141,9 @@ def update_location(location_id):
     })
     return redirect(url_for('view_all'))
 
-def cat_summary(loc_type):
-    locations = {}
-    try: 
-        locations = [
-            location for location in mongo.db.location.find()
-            .limit(4)]
-    except: 
-        return ('Whoops, no results!')
-
+def cat_summary():
+    """function that takes the loc_type eg cafe and finds places that match and then"""
+    return """an array of 4 places"""
 
 
 if __name__ == '__main__':

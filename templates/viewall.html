@@ -53,22 +53,58 @@
   </div>
 </div>
 
-{% for location_type in loc_type %}
-
-<h1>{{location_type.loc_type}}</h1>
-<div>{{url_for('cat_summary', loc_type=location_type)}}</div>
-
-{% endfor %}
-
-{% for location in location %}
-
-<div class="row">
-    <div class="col">
-        <h2><a href="{{url_for('view_location', location_id=location._id)}}">{{location.name}}</a></h2>
-    </div>
+<div>
+    <h1>Filter on Alt_work location type and region</h1>
 </div>
 
 <div class="row">
+    <div class="col-12 col-md-6">
+        <label for="selectCategory">Search by Category</label>
+        <form method="POST">
+          <select class="custom-select" id="category-select">
+            <option>Select a Location type</option>
+              {% for location_type in loc_type %}
+            <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
+              {% endfor %}
+          </select>
+                            
+          <select class="custom-select" id="category-select">
+            <option>Select a Region</option>
+              {% for regions in region %}
+            <option value="{{regions.area}}"> {{regions.area}}</option>
+              {% endfor %}
+          </select>
+                            
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<div>
+  <h1>Top rated locations by type</h1>
+    {% for location_type in loc_type %}
+
+  <h1>{{location_type.loc_type}}</h1>
+
+      {% for location in summary %}
+      <h3>names of locations here x4</h3>
+    
+      <h3>{{location.name}}</h3>
+      {% endfor %}
+    
+    {% endfor %}
+</div>
+
+
+{% for location in location %}
+  <div class="row">
+    <div class="col">
+        <h2><a href="{{url_for('view_location', location_id=location._id)}}">{{location.name}}</a></h2>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-12 col-md-6 resize">
         <img class="img-fluid" src="{{location.photos}}">
     </div>
@@ -78,7 +114,5 @@
     </div>
 
 {% include 'starrating.html' %}
-
-
-</div>
+  </div>
 {% endfor %} {% endblock %}
