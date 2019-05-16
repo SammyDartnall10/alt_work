@@ -1,0 +1,33 @@
+<div class="col-12 col-md-6">
+
+        {% if location.rating in range (1,6) %}
+            <span class="fa fa-star checked"></span> 
+        {% else %}
+            <span class="fa fa-star" style="visibility: hidden"></span> 
+        {% endif %} 
+        
+        {% if location.rating in range (2,6) %}
+            <span class="fa fa-star checked"></span> 
+        {% else %}
+            <span class="fa fa-star" style="visibility: hidden"></span> 
+        {% endif %} 
+        
+        {% if location.rating in range (3,6) %}
+            <span class="fa fa-star checked"></span> 
+        {% else %}
+            <span class="fa fa-star" style="visibility: hidden"></span> 
+        {% endif %} 
+        
+        {% if location.rating in range (4,6) %}
+            <span class="fa fa-star checked"></span> 
+        {% else %}
+            <span class="fa fa-star" style="visibility: hidden"></span> 
+        {% endif %} 
+        
+        {% if location.rating == 5 %}
+            <span class="fa fa-star checked"></span> 
+        {% else %}
+            <span class="fa fa-star" style="visibility: hidden"></span> 
+        {% endif %}
+
+    </div>

@@ -1,0 +1,31 @@
+{% extends 'base.html'%} {% block content %}
+
+
+<h1>This is all the results</h1>
+<div>
+    <h1>{{ location }}</h1>
+</div>
+<br> 
+
+{% for item_value in summary %}
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3>{{ item_value.name }}</h3>
+            <p>{{ item_value.address }}</p>
+        </div>
+    </div>    
+        
+    <div class="row">
+        <div class="col-12 col-md-6">
+            {% include 'stars.html' %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 resize">
+          <img class="img-fluid" src="/static/images/cafecarousel.jpg">
+        </div>
+    </div>
+
+
+{% endfor %} {% endblock %}
