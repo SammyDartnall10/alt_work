@@ -2,11 +2,13 @@
 
 
 
-<h1>Location</h1>
 
 <div class="row">
-    <div class="col">
-        <h2>{{location.name}}</h2>
+    <div class="col-6">
+        <h1>{{location.name}}</h1>
+    </div>
+    <div class="col-6">
+        <a href="{{url_for('view_all')}}"><h5>Back to search</h5></a>
     </div>
 </div>
 
@@ -30,7 +32,7 @@
 
 <div class="row">
     <div class="col-3">
-        <h4>Is there free (fast!) wifi?</h4>
+        <h5>Is there free (fast!) wifi?</h5>
         {% if location.wifi == "on"  %}
             <span>Yes</span> 
         {% else %}
@@ -39,7 +41,7 @@
         
     </div>
     <div class="col-3">
-        <h4>Are there places to plug in?</h4>
+        <h5>Are there places to plug in?</h5>
         {% if location.plugs == "on"  %}
             <span>Yes</span> 
         {% else %}
@@ -48,7 +50,7 @@
         
     </div>
     <div class="col-3">
-        <h4>Does it serve drinks?</h4>
+        <h5>Does it serve drinks?</h5>
         {% if location.drinks == "on"  %}
             <span>Yes</span> 
         {% else %}
@@ -57,7 +59,7 @@
         
     </div>
     <div class="col-3">
-        <h4>Can I bring my dog(or cat, bird, whatever)?</h4>
+        <h5>Can I bring my dog(or cat, bird, whatever)?</h5>
         {% if location.pets_allowed == "on"  %}
             <span>Yes</span> 
         {% else %}
