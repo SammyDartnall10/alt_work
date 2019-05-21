@@ -62,7 +62,7 @@ def view_location(location_id):
     
     return render_template('location.html', location=single_location, region=all_regions)
     
-"""show the individual record - pulls data from DB based on _id"""
+"""show the individual record - once review added"""
 @app.route('/review_added/<location_id>', methods=["POST"])
 def review_added(location_id):
     review = request.form['review']

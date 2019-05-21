@@ -8,15 +8,15 @@
         <div class="col-md-4 mb-3" required>
             <label for="validationServer01">Name of new Alt_location</label>
             <input type="text" class="form-control is-valid" id="name" placeholder="New Alt_location" value="name" name="name" required>
-            <div class="valid-feedback">
-                Looks good!
+            <div class="invalid-feedback">
+                
             </div>
         </div>
         <div class="col-md-4 mb-3" required>
             <label for="validationServer01">Short address</label>
             <input type="text" class="form-control is-valid" id="address" placeholder="Address" value="address" name="address" required>
-            <div class="valid-feedback">
-                Looks good!
+            <div class="invalid-feedback">
+               
             </div>
         </div>
     </div>
@@ -78,17 +78,9 @@
         <div class="invalid-feedback">Please select a location type</div>
     </div>
 
-    <!-- removing - not really any image capabilty in mongoDB database setup for this
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="validatedCustomFile" name="photos">
-        <label class="custom-file-label" for="validatedCustomFile">Upload a photo...</label>
-        <div class="invalid-feedback">Hmm... not the file type we're after.. try again?</div>
-    </div>
-    -->
-
     <div class="mb-3">
         <label for="validationTextarea">Please add a really descriptive description- itll help our users get a good idea of what the place is like!</label>
-        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" name="description"></textarea>
+        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Description" name="description"></textarea>
         <div class="invalid-feedback">
             Please enter a descripton in the box above.
         </div>
