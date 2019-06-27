@@ -5,11 +5,3 @@ $(".dropdown-search").on("click", function() {
     
 });
 
-
-/*
-$("delete_location").on("click", function(){
-    alert("Are you sure you want to delete this record?")
-    if input==""
-    
-})
-*/
