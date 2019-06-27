@@ -72,17 +72,17 @@ img {
 }
 
 .quarters{
-  height: 50vh;
-  width: 50vw;
+  height: 45vh;
+  width: 45vw;
+  margin: 0;
 }
 
 .one{
-  /*background-image: url('/static/images/Alt.jpg');
+  background-image: url('/static/images/Alt.jpg');
   background-repeat: no-repeat;
-  background-size: contain;*/
-  
-  
+  background-size: contain;
 }
+
 
 .two{
   background-color: white;
@@ -93,9 +93,14 @@ img {
 }
 
 .four{
-  /*background-image: url('/static/images/Work.jpg');
+  background-image: url('/static/images/Work.jpg');
   background-repeat: no-repeat;
-  background-size: contain;*/
+  background-size: contain;
+}
+
+.border{
+  border-width: medium;
+  border-color: grey;
 }
 
 /*.star-rating {
