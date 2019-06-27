@@ -34,28 +34,28 @@
 
 <div class="row">
     <div class="col-3">
-        <h5>Is there free (fast!) wifi?</h5>
+        <h6>Is there free (fast!) wifi?</h6>
         {% if location.wifi == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
     <div class="col-3">
-        <h5>Are there places to plug in?</h5>
+        <h6>Are there places to plug in?</h6>
         {% if location.plugs == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
     <div class="col-3">
-        <h5>Does it serve drinks?</h5>
+        <h6>Does it serve drinks?</h6>
         {% if location.drinks == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
     <div class="col-3">
-        <h5>Can I bring my dog(or cat, bird, whatever)?</h5>
+        <h6>Can I bring my dog(or cat, bird, whatever)?</h6>
         {% if location.pets_allowed == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
@@ -63,7 +63,11 @@
     </div>
 </div>
 
-
+<div class="col-12 ">
+        <h6>What kind of space is this Alt_location best for?</h6>
+        <p>{{location.best_suited}}</p>
+</div>
+    
 <div class="row">
     <div class="col-12 col-sm-4">
         <a class="btn btn-dark" href="{{url_for('edit_location', location_id=location._id)}}" role="button">Edit this Alt_location</a>
