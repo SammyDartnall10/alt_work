@@ -1,6 +1,6 @@
 <h1>Alt_Work</h1>
 
-<p>Check it this out 👉 >> https://alt-working.herokuapp.com
+<p>Check this out 👉 >> https://alt-working.herokuapp.com
 
 <p>This project was first and foremost born out of a personal frustration when trying to find alternative places to work as a student studing remotely. </p>
 <p>After speaking to other students, freelanceers and side-hustlers I found that the problem was a universal one. We all know theres only so long that you can work in your front room, kitchen, bedroom, before you feel the inevitable cabin fever creeping in. </p>
@@ -19,6 +19,7 @@
 <h1>UX</h1>
 
 Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+<img src="readme_static/Use_Stories_Cropped.png">
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
@@ -89,4 +90,3 @@ Acknowledgements
 
 I received inspiration for this project from X
 
-<img src="readme_static/wireframes.jpeg">
