@@ -1,5 +1,7 @@
 <h1>Alt_Work</h1>
 
+<p>Check it this out 👉 >> https://alt-working.herokuapp.com
+
 <p>This project was first and foremost born out of a personal frustration when trying to find alternative places to work as a student studing remotely. </p>
 <p>After speaking to other students, freelanceers and side-hustlers I found that the problem was a universal one. We all know theres only so long that you can work in your front room, kitchen, bedroom, before you feel the inevitable cabin fever creeping in. </p>
 <p>The soloution, on the surface, is simple - find a cafe, a library, or sunny park to work in for the day. Or rent a space in a co-working space, and mingle with likeminded people working toward the same thing as you. </p>
@@ -23,11 +25,11 @@ In particular, as part of this section we recommend that you provide a list of U
 As a user type, I want to perform an action, so that I can achieve a goal.
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
-Features
+<h1>Features</h1>
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
 
-Existing Features
+<h2>Existing Features</h2>
 
 Feature 1 - allows users X to achieve Y, by having them fill out Z
 ...
@@ -35,21 +37,21 @@ For some/all of your features, you may choose to reference the specific project 
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
-Features Left to Implement
+<h2>Features Left to Implement</h2>
 
 Another feature idea
-Technologies Used
+<h1>Technologies Used</h1>
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
 JQuery
 The project uses JQuery to simplify DOM manipulation.
-Testing
+<h1>Testing</h1>
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
+<h3>Maunal Testing with Users</h3>
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
 
 Contact form:
@@ -57,18 +59,19 @@ Go to the "Contact Us" page
 Try to submit the empty form and verify that an error message about the required fields appears
 Try to submit the form with an invalid email address and verify that a relevant error message appears
 Try to submit the form with all inputs valid and verify that a success message appears.
+<h3>Look and feel</h3>
 In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
+<h3>Bugs and Problems</h3>
 You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
-Deployment
+<h1>Deployment<h1>
 
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
+<h3>Use of GitHUb</h3>
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-
+<h3>Deploying to Heroku</h3>
 Different values for environment variables (Heroku Config Vars)?
 Different configuration files?
 Separate git branch?
@@ -85,3 +88,5 @@ The photos used in this site were obtained from ...
 Acknowledgements
 
 I received inspiration for this project from X
+
+<img src="readme_static/wireframes.jpeg">
