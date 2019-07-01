@@ -143,18 +143,10 @@ The site has been deployed using Heroku. The process for deploying to Heroku is 
 
 Final deployed site is here: https://alt-working.herokuapp.com/
 
-To run locally, create a new workspace in your local computer. Use $ git clone https://github.com/SammyDartnall10/alt_work.git to create a local copy of the code. 
-Install requirements with $ pip3 install -r requirements.txt
-Run the app with $ python3 app.py
+<p>To run locally, create a new workspace in your local computer. Use $ git clone https://github.com/SammyDartnall10/alt_work.git to create a local copy of the code.</p> 
+<p>Install requirements with $ pip3 install -r requirements.txt</p>
+<p>Run the app with $ python3 app.py</p>
 
-
-<h3>Use of GitHub</h3>
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-<h3>Deploying to Heroku</h3>
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
 
 <h1>Credits</h1>
 

@@ -77,7 +77,8 @@ def review_added(location_id):
 def filteredtype():
     location_type = request.form['type-select']
     filtered_location = mongo.db.locations.find({"category": (location_type)}).sort("rating", -1)
-    return render_template('filteredresults.html', location = location_type, summary=filtered_location)
+    count = mongo.db.locations.find({"category": (location_type)}).count()
+    return render_template('filteredresults.html', location = location_type, summary=filtered_location, count = count)
  
 
 """show results based on selected region"""
@@ -85,7 +86,8 @@ def filteredtype():
 def filteredregion():
     region_type = request.form['region-select']
     filtered_region = mongo.db.locations.find({"region": (region_type)}).sort("rating", -1)
-    return render_template('filteredresults.html', location = region_type, summary=filtered_region)
+    count = mongo.db.locations.find({"region": (region_type)}).count() 
+    return render_template('filteredresults.html', location = region_type, summary=filtered_region, count = count)
     
 """add a new record for location - opens a form"""    
 @app.route('/add_new')
