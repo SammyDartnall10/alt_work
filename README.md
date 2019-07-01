@@ -57,15 +57,18 @@ In particular, as part of this section we recommend that you provide a list of U
 As a user type, I want to perform an action, so that I can achieve a goal.
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
-<h6>Wireframes and Functional flows:</h6>
+<h3>Wireframes and Functional flows:</h3>
 
+<h4>Desktop:</h4>
 <img src="readme_static/Layout.png">
 
+<h4>Mobile:</h4>
 <img src="readme_static/Layout_Mobile.png">
 
 <h1>Features</h1>
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+<p>Features deployed, and to be deployed are summarised in the following table</p>
+<img src="readme_static/Deployment.png">
 
 <h2>Existing Features</h2>
 
@@ -80,9 +83,6 @@ In addition, you may also use this section to discuss plans for additional featu
 Another feature idea
 <h1>Technologies Used</h1>
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
-<h6>Technologies used in this application:</h6>
 As a Flask application app logic has be written in Python 3. 
 
 HTML, CSS, and JavaScript have be used to enhance the look and feel in the following ways.
@@ -93,13 +93,30 @@ Javascript, and the JQuery  and ajax frameworks have been used to capture on-cli
 
 The Alt_Work app is data-driven and relies on a mix of structured and unstructured data. CRUD operations are carried out using NoSQL databse - specifically MongoDB.
 
-
 <h1>Testing</h1>
+
+<h3>UX testing (look and feel)</h3>
+For this project, testing was carried out manually, both in the browser and with Google developer tools to test different screen sizes.
+
+<h3>Look and feel</h3>
+In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+
+<h3>Code Validity</h3>
+HTML was validated using the Markup Validation Service provided by The World Wide Web Consortium (W3C): https://validator.w3.org/
+
+CSS was validated using the CSS Validation Service provided by The World Wide Web Consortium (W3C): https://jigsaw.w3.org/css-validator/
+
+<h3>Maunal Testing with Users</h3>
+
+To make sure each of the CRUD operations could be carried out on different devices and in different combinations, manual testing of adding, editing and deleting records was carried out by myself, and two to others (all the thanks to my boyfriend and sister - credits to be found in more detail below).
+
+
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
 Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-<h3>Maunal Testing with Users</h3>
+
+
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
 
 Contact form:
@@ -107,17 +124,28 @@ Go to the "Contact Us" page
 Try to submit the empty form and verify that an error message about the required fields appears
 Try to submit the form with an invalid email address and verify that a relevant error message appears
 Try to submit the form with all inputs valid and verify that a success message appears.
-<h3>Look and feel</h3>
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+
 <h3>Bugs and Problems</h3>
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+One issue not resolved in the submission for this project is the management of image files. MongoDB is not intended to store image files, so I initially searched for other means to store and access images.
+Packages in Node.js, or perhaps online hosting were options, but out of the scope of this particular project. 
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
-<h1>Deployment<h1>
+<h1>Deployment</h1>
 
+GitHub has been used throughout this project to maintain version control as feature are added. After adding a new feature, the code is pushed to GitHub.
+
+The site has been deployed using Heroku. The process forr deploying to Heroku is as follows: 
+- In your Heroku account, create a new app
+- Under the setting tab in the app, reveal and change the 'config vars' to IP 0.0.0.0 and PORT 5000. 
+- Ensure in your app you have in your app files in GitHub a Procfile with the following: 'web: python app.py', and you project requirements in a requirements.txt file. 
+- In Heroku, in your app and under the 'deploy' tab, choose the GitHub deployment method. In the app connected to GitHub section find and select the app you wish to deploy. 
+- Choose either automatic or manual deploys. In whichever you choose, select the branch in the GitHub repository you wish to deploy. 
+
+
+Final deployed site is here: https://alt-working.herokuapp.com/
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-<h3>Use of GitHUb</h3>
+<h3>Use of GitHub</h3>
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
 <h3>Deploying to Heroku</h3>
 Different values for environment variables (Heroku Config Vars)?
