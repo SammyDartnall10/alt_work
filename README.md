@@ -52,10 +52,6 @@
 
 - To make changes or upload new records users must login - this will provide a means of tracking changes. 
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-
-As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
 <h3>Wireframes and Functional flows:</h3>
 
@@ -72,15 +68,25 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 <h2>Existing Features</h2>
 
-Feature 1 - allows users X to achieve Y, by having them fill out Z
-...
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+<p>All the CRUD (Create, Read, Update and Delete) operations have been fully delpoyed in the app. </p>
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+<p>The backend code and an easy to use frontend form have been created in "Add a new Alt_Location" to allow users to add new records to the site.</p>
 
-<h2>Features Left to Implement</h2>
+<p>Backend code groups and summarises the location on the site, based on region and type. This is displayed in a frontend page- the categories are then clickable to drill down into a filtered view based on region and type. 
+Backend code will retrieve a list of recipes, filtered based on region and type, and orders them based on rating. A frontend page displays these results, and to shows summary statistics in the form of amount of matching results. </p>
 
-Another feature idea
+<p>A detailed view for each of the locations has been made. Editing and deleting of the location records is carried out on a separate page. Confirmation of deletion is implemented to prevent accidental deletion. </p>
+
+<h2>Features Left to Implement (optional)</h2>
+
+<p>Authentication is yet to be implemented. Authentication will mean that reviews can be attributed to users, and also provide the basis for allowing location owners to 'claim' a location as thiers. 
+A further development will be a page accesible only when logged in, where a location owner can maintain the business information held on a location. 
+There would need to be some kind of verification process that the location owner is a genuine owner, otherwise there is the possibility that a user can fasley claim a location as thier own, and incorrectly maintain or represent that location to the true owners detriment. In the absence of the resources to carry this out for each location, the editing of location details has been left open to the community, until a later date where verification is possible. </p>
+
+<p>The storage and management of pictures has also been left as a later implementation. An online hosting service could be used, however users may not be happy with thier images beign stored on an easy to access site such as flickr. The option then of a database is possible, but a Node.js or other package would be required for this to work with MongoDB (MongoDB is not intended for image storage). As the focus of this brief has been around CRUD operations and data manipulation this has been left for a later release. </p>
+
+<p>At the time of first release the rating is a single number defined in the new location/edit location form, to reflect the latest users experince. This would be improved to be an average rating of reviews, a behaviour more in line with other review sites.
+
 <h1>Technologies Used</h1>
 
 As a Flask application app logic has be written in Python 3. 
@@ -116,30 +122,18 @@ The following testing structure was used:
 
 <img src="readme_static/CRops.png">
 <img src="readme_static/UDops.png">
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
 
 <h3>Bugs and Problems</h3>
 One issue not resolved in the submission for this project is the management of image files. MongoDB is not intended to store image files, so I initially searched for other means to store and access images.
 Packages in Node.js, or perhaps online hosting were options, but out of the scope of this particular project. 
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
 <h1>Deployment</h1>
 
 GitHub has been used throughout this project to maintain version control as feature are added. After adding a new feature, the code is pushed to GitHub.
 
-The site has been deployed using Heroku. The process forr deploying to Heroku is as follows: 
+The site has been deployed using Heroku. The process for deploying to Heroku is as follows: 
 - In your Heroku account, create a new app
 - Under the setting tab in the app, reveal and change the 'config vars' to IP 0.0.0.0 and PORT 5000. 
 - Ensure in your app you have in your app files in GitHub a Procfile with the following: 'web: python app.py', and you project requirements in a requirements.txt file. 
@@ -148,7 +142,12 @@ The site has been deployed using Heroku. The process forr deploying to Heroku is
 
 
 Final deployed site is here: https://alt-working.herokuapp.com/
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+
+To run locally, create a new workspace in your local computer. Use $ git clone https://github.com/SammyDartnall10/alt_work.git to create a local copy of the code. 
+Install requirements with $ pip3 install -r requirements.txt
+Run the app with $ python3 app.py
+
+
 <h3>Use of GitHub</h3>
 In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
 <h3>Deploying to Heroku</h3>
@@ -157,15 +156,22 @@ Different configuration files?
 Separate git branch?
 In addition, if it is not obvious, you should also describe how to run your code locally.
 
-Credits
+<h1>Credits</h1>
 
-Content
+<p>A huge thanks to my sister and boyfriend for helping me in many ways, but especially in helping me extensively test this site, to make sure all operations and key tasks can be carried out easy and correctly.</p>
 
-The text for section Y was copied from the Wikipedia article Z
-Media
+<p>Thanks also to my mentors- previous and current - for helping me build my understanding of how python, the Flask framework and NoSQL databases work, providing direction and helping to squish those pesky bugs that keep popping up! 
 
-The photos used in this site were obtained from ...
-Acknowledgements
+<h1>Content</h1>
 
-I received inspiration for this project from X
+<p>Descriptions for each of the locations was found through google searches of locations in the area. </p>
+
+<p>Reviews and information on wifi, plugs, food and bringing pets are entirely fictional, and made up by either myself or those assisting in testing.</p>
+
+<p>An excel spreadsheet was created and then converted to CSV. This CSV file was then converted to JSON, so that location data could be uploaded in one go to MongoDB.</p>
+
+<p>Images were from unsplash.com</p>
+
+
+
 
