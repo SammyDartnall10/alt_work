@@ -18,7 +18,7 @@
 
 <h1>UX</h1>
 
-<p>The following Use Cases summarise the four main groups of users that would use this app (names changed and stock photos used for anonymity</p> puropses)
+<p>The following Use Cases summarise the four main groups of users that would use this app (names changed and stock photos used for anonymity puropses)</p> 
 
 <img src="readme_static/Use_Stories_Cropped.jpg">
 
@@ -31,28 +31,37 @@
 - Search for locations by best_for
 
 - Display information of each location :
-	address
-	category
-	ammenities (wifi etc)
-    reviews from other users
+	* Address
+	* Category
+	* Ammenities (wifi etc)
+    * Reviews from other users
 
 - Users can upload a new location record
 
-- Location owners can identify themselves as the owner of that location, and maintain business record informaiton:
-    address
+- Location owners can identify themselves as the owner of that location, and maintain business record information:
+    * Business Name
+    * Address
+    * Email/Contact details
+    * Profile/Display photo
+    * Offers and sales available for users (BYGOF etc)
+    
 
 - Users can edit exising location records by way of adding a review
 
 - If information on a location is incorrect users can edit and update
 
-- To make changes or upload new records users must login - means of tracking changes. 
+- To make changes or upload new records users must login - this will provide a means of tracking changes. 
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
 As a user type, I want to perform an action, so that I can achieve a goal.
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
+<h6>Wireframes and Functional flows:</h6>
+
 <img src="readme_static/Layout.png">
+
+<img src="readme_static/Layout_Mobile.png">
 
 <h1>Features</h1>
 
@@ -73,8 +82,18 @@ Another feature idea
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
-JQuery
-The project uses JQuery to simplify DOM manipulation.
+<h6>Technologies used in this application:</h6>
+As a Flask application app logic has be written in Python 3. 
+
+HTML, CSS, and JavaScript have be used to enhance the look and feel in the following ways.
+
+Rendering of pages was acheived using a combintation of HTML5 and CSS. The Bootstrap 4 framework has been employed to acheive a consistent look and feel across the app and device sizes. 
+
+Javascript, and the JQuery  and ajax frameworks have been used to capture on-click events and modal popups, to enhance user experience and guide usage (prevent accidental deletion of records)
+
+The Alt_Work app is data-driven and relies on a mix of structured and unstructured data. CRUD operations are carried out using NoSQL databse - specifically MongoDB.
+
+
 <h1>Testing</h1>
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
