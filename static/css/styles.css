@@ -109,3 +109,21 @@ img {
   border-color: grey;
 }
 
+/*.navbar {
+  position: fixed
+}*/
+
+body {
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+}
+
+.footer {
+  margin-left: 8vw;
+  font-size: 1em;
+  color: grey;
+}
+
+.card-spacing{
+  margin-top: 8vh;
+}
