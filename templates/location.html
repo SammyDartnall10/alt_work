@@ -1,8 +1,5 @@
 {% extends 'base.html'%} {% block content %}
 
-
-
-
 <div class="row">
     <div class="col-6">
         <h1>{{location.name}}</h1>
@@ -113,14 +110,10 @@
         {{ review }}
     </div>
     <br> {% endfor %}
-
-
 </div>
 <br>
 <div class="col-12 col-sm-4">
     <a class="btn btn-dark" href="{{url_for('add_review', location_id=location._id)}}" role="button">Add a review</a>
 </div>
-
-
 
 {% endblock %}

@@ -8,28 +8,22 @@
         <div class="col-md-4 mb-3" required>
             <label for="validationServer01">Name of new Alt_location</label>
             <input type="text" class="form-control is-valid" id="name" placeholder="New Alt_location" value="name" name="name" required>
-            <div class="invalid-feedback">
-                
-            </div>
+            <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-4 mb-3" required>
             <label for="validationServer01">Short address</label>
             <input type="text" class="form-control is-valid" id="address" placeholder="Address" value="address" name="address" required>
-            <div class="invalid-feedback">
-               
-            </div>
+            <div class="invalid-feedback"></div>
         </div>
     </div>
-
-
 
     <div class="form-group">
         <select class="custom-select" name="region" required>
             <option value="">Which region is it in?</option>
-    {% for region in regions %}
+                {% for region in regions %}
             <option value="{{region.area}}">{{region.area}}</option>
-    {% endfor %}
-    </select>
+                {% endfor %}
+        </select>
         <div class="invalid-feedback">Please select a location type</div>
     </div>
 
@@ -55,22 +49,21 @@
 
     <div class="form-group">
         <select class="custom-select" name="category">
-      <option value="">What kind of space is it?</option>
-    {% for location_type in loc_type %}
-        <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
-    {% endfor %}
-      
-    </select>
+              <option value="">What kind of space is it?</option>
+                {% for location_type in loc_type %}
+            <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
+                {% endfor %}
+        </select>
         <div class="invalid-feedback">Please select a location type</div>
     </div>
 
     <div class="form-group">
         <select class="custom-select" name="best_suited">
-      <option value="">What kind of work is it best for?</option>
-    {% for best_suited in suited %}
-        <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
-    {% endfor %}
-    </select>
+            <option value="">What kind of work is it best for?</option>
+                {% for best_suited in suited %}
+            <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
+                {% endfor %}
+        </select>
         <div class="invalid-feedback">Please select a location type</div>
     </div>
 
@@ -92,7 +85,6 @@
           <option>5</option>
         </select>
       </div>
-
 
     <button class="btn btn-dark" type="submit">Submit form</button>
 

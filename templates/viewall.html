@@ -11,7 +11,7 @@
         <select class="custom-select type-select" id="type-select" name='type-select'>
               <option>Select a Location type</option>
                 {% for location_type in loc_type %}
-                  <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
+              <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
                 {% endfor %}
         </select>
             <input type="submit" id='submit' class='btn btn-dark type-search' value="Search" />
@@ -60,8 +60,6 @@
   {% endfor %}
 </div>
 
-
-   
 {% endfor %} 
  
 {% endblock %}
