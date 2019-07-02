@@ -25,15 +25,7 @@ def view_all():
     
     loc_types = list(mongo.db.location_type.find())
     summary = get_summary(loc_types)
-    print("Summary type is:", type(summary))
-    # for loop to see what each of the data types are
-    for key, value in summary.items():
-        print("\nLocation Type:", key)
-        #Value is currently a list
-        print("Key type is:", type(key))
-        print("Value type is:", type(value))
-        for item_set in value:
-            print("Item_set type is:", type(item_set))
+    
     
     return render_template("viewall.html",
         location = list(mongo.db.locations.find()),
@@ -47,11 +39,11 @@ def get_summary(loc_types):
     for location_type in loc_types:
         print(location_type)
         summary[location_type['loc_type']] = [location for location in mongo.db.locations.find( { 'category': location_type['loc_type'] } ).limit( 3 )]
-
     return summary
     
 @app.route('/location')
 def location():
+    
     return render_template("location.html")
    
 """show the individual record - pulls data from DB based on _id"""
@@ -78,6 +70,7 @@ def filteredtype():
     location_type = request.form['type-select']
     filtered_location = mongo.db.locations.find({"category": (location_type)}).sort("rating", -1)
     count = mongo.db.locations.find({"category": (location_type)}).count()
+    
     return render_template('filteredresults.html', location = location_type, summary=filtered_location, count = count)
  
 
@@ -87,6 +80,7 @@ def filteredregion():
     region_type = request.form['region-select']
     filtered_region = mongo.db.locations.find({"region": (region_type)}).sort("rating", -1)
     count = mongo.db.locations.find({"region": (region_type)}).count() 
+    
     return render_template('filteredresults.html', location = region_type, summary=filtered_region, count = count)
     
 """add a new record for location - opens a form"""    
@@ -102,12 +96,14 @@ def add_new():
 def new_location():
     locations = mongo.db.locations
     locations.insert_one(request.form.to_dict())
+    
     return redirect(url_for('landing_page'))
     
 """deletes the location and redirects to list of all"""
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
     mongo.db.locations.remove({'_id': ObjectId(location_id)})
+    
     return redirect(url_for('view_all'))
 
 """edit location - _id from DB"""
@@ -117,6 +113,7 @@ def edit_location(location_id):
     regions = mongo.db.region.find()
     loc_type = mongo.db.location_type.find()
     suited=mongo.db.best_suited.find()
+    
     return render_template('editlocation.html', location=location, regions=regions, loc_type=loc_type, suited=suited)
 
 @app.route('/update_location/<location_id>', methods=["POST"])
@@ -138,6 +135,7 @@ def update_location(location_id):
         'rating': int(request.form['rating']),
         'description':request.form.get('description')
     })
+    
     return redirect(url_for('view_all'))
 
 """add a reveiw - _brings up form to add reveiw"""
