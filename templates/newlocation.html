@@ -21,7 +21,7 @@
         <select class="custom-select" name="region" required>
             <option value="">Which region is it in?</option>
                 {% for region in regions %}
-            <option value="{{region.area}}">{{region.area}}</option>
+            <option value="{{region.area}}">{{region.area|title}}</option>
                 {% endfor %}
         </select>
         <div class="invalid-feedback">Please select a location type</div>
@@ -51,7 +51,7 @@
         <select class="custom-select" name="category">
               <option value="">What kind of space is it?</option>
                 {% for location_type in loc_type %}
-            <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
+            <option value="{{location_type.loc_type}}">{{location_type.loc_type|title}}</option>
                 {% endfor %}
         </select>
         <div class="invalid-feedback">Please select a location type</div>
@@ -61,7 +61,7 @@
         <select class="custom-select" name="best_suited">
             <option value="">What kind of work is it best for?</option>
                 {% for best_suited in suited %}
-            <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
+            <option value="{{best_suited.suited}}">{{best_suited.suited|title}}</option>
                 {% endfor %}
         </select>
         <div class="invalid-feedback">Please select a location type</div>

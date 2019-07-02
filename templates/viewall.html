@@ -11,7 +11,7 @@
         <select class="custom-select type-select" id="type-select" name='type-select'>
               <option>Select a Location type</option>
                 {% for location_type in loc_type %}
-              <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
+              <option value="{{location_type.loc_type}}"> {{location_type.loc_type|title}}</option>
                 {% endfor %}
         </select>
             <input type="submit" id='submit' class='btn btn-dark type-search' value="Search" />
@@ -26,7 +26,7 @@
         <select class="custom-select" id="region-select" name='region-select'>
               <option>Select a Region</option>
                 {% for regions in region %}
-              <option value="{{regions.area}}"> {{regions.area}}</option>
+              <option value="{{regions.area}}"> {{regions.area|title}}</option>
                 {% endfor %}
         </select>
           <input type="submit" id="region-search" class='btn btn-dark type-search' value="Search"/>

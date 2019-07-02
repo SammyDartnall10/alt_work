@@ -27,9 +27,9 @@
             
             {% for region in regions %}
                 {% if region.area == location.region %}
-                    <option value="{{region.area}}" selected >{{region.area}}</option>
+                    <option value="{{region.area}}" selected >{{region.area|title}}</option>
                 {% else %}
-                    <option value="{{region.area}}">{{region.area}}</option>
+                    <option value="{{region.area}}">{{region.area|title}}</option>
                 {% endif %}
             {% endfor %}
             
@@ -76,9 +76,9 @@
      
     {% for location_type in loc_type %}
         {% if location_type.loc_type == location.category %}
-        <option value="{{location_type.loc_type}}" selected>{{location_type.loc_type}}</option>
+        <option value="{{location_type.loc_type}}" selected>{{location_type.loc_type|title}}</option>
         {% else %}
-        <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
+        <option value="{{location_type.loc_type}}">{{location_type.loc_type|title}}</option>
         {% endif %}
     {% endfor %}
             </select>
@@ -90,9 +90,9 @@
       <option value="">What kind of work is it best for?</option>
     {% for best_suited in suited %}
         {% if best_suited.suited == location.best_suited %}
-        <option value="{{best_suited.suited}}" selected>{{best_suited.suited}}</option>
+        <option value="{{best_suited.suited}}" selected>{{best_suited.suited|title}}</option>
         {% else %}
-        <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
+        <option value="{{best_suited.suited}}">{{best_suited.suited|title}}</option>
         {% endif %}
     {% endfor %}
     </select>
