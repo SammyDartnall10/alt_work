@@ -152,7 +152,9 @@ Final deployed site is here: https://alt-working.herokuapp.com/
 
 <p>A huge thanks to my sister and boyfriend for helping me in many ways, but especially in helping me extensively test this site, to make sure all operations and key tasks can be carried out easy and correctly.</p>
 
-<p>Thanks also to my mentors- previous and current - for helping me build my understanding of how python, the Flask framework and NoSQL databases work, providing direction and helping to squish those pesky bugs that keep popping up! 
+<p>Thanks also to my mentors- previous and current - for helping me build my understanding of how python, the Flask framework and NoSQL databases work, providing direction and helping to squish those pesky bugs that keep popping up! </p>
+
+<p>Also, I really cannot emphasise my thanks enough to the code institue tutors for their patience and help over countless hours - the real MVPs!!  </p>
 
 <h1>Content</h1>
 
