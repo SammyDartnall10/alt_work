@@ -5,7 +5,7 @@
 <p>This project was first and foremost born out of a personal frustration when trying to find alternative places to work as a student studying remotely. </p>
 <p>After speaking to other students, freelancers and side-hustlers I found that the problem was a universal one. We all know there’s only so long that you can work in your front room, kitchen, bedroom, before you feel the inevitable cabin fever creeping in. </p>
 <p>The solution, on the surface, is simple - find a cafe, a library, or sunny park to work in for the day. Or rent a space in a co-working space, and mingle with likeminded people working toward the same thing as you. </p>
-<p>There are two problems with this, however. The first, with the aforementioned cafes and restaurants, is that you may spend the best part of an hour travelling into town, only to find there are no plug sockets for you laptop, the Wi-Fi is either slow at best, or paid for, and the background noise means you cant hear yourself think let alone take a call. You're absolutely starving but you cant really take out the homemade sandwich you bought in with you, so you fork out another £8 for a coffee and a panini. 😡 </p>
+<p>There are a few problems with this, however. The first, with the aforementioned cafes and restaurants, is that you may spend the best part of an hour travelling into town, only to find there are no plug sockets for you laptop, the Wi-Fi is either slow at best, or paid for, and the background noise means you cant hear yourself think let alone take a call. You're absolutely starving but you cant really take out the homemade sandwich you bought in with you, so you fork out another £8 for a coffee and a panini. 😡 </p>
 <p>And it seems like a minor thing, but you have to limit the amount of times you go to the loo. Sounds trivial, but a big problem. If you've set up in a cafe or the local library in a central London there is no way you're getting up and leaving thousands of pounds in the form of hardware, but more importantly, thousands of hours of blood sweat and (many!) tears in the form of work just sitting on a table for someone to walk off with.</p> 
 <p>And there’s also no way that you're going to lose the only seat with the solitary plug socket to be taken by everyone else also facing the same problem. </p>
 <p>So what about co-working spaces? They are fantastic - you get to network, you can go to the loo as many times as you possibly can dream, drink gallons of decent coffee and get a few insta-worthy shots of the #digitalnomad dream*. </p>
@@ -106,8 +106,6 @@ The Alt_Work app is data-driven and relies on a mix of structured and unstructur
 <h3>UX testing (look and feel)</h3>
 For this project, testing was carried out manually, both in the browser and with Google developer tools to test different screen sizes.
 
-<h3>Look and feel</h3>
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
 
 <h3>Code Validity</h3>
 HTML was validated using the Markup Validation Service provided by The World Wide Web Consortium (W3C): https://validator.w3.org/
