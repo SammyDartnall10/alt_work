@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
@@ -7,7 +9,7 @@ from ast import literal_eval
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'projectThree'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb+srv://newuser:newuser@myfirstcluster-wrvet.mongodb.net/projectThree?retryWrites=true')
+app.config["MONGO_URI"] = 'mongodb+srv://newuser:newuser@myfirstcluster-wrvet.mongodb.net/projectThree?retryWrites=true'
 
 mongo = PyMongo(app)
 
@@ -147,8 +149,8 @@ def add_review(location_id):
    
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+    app.run(host='127.0.0.1',
+            port=int('8080'),
             debug=True)
             
 

@@ -16,13 +16,13 @@
 </div>
 
 
-    
+  <div class="row">  
 {% for item_value in summary %}
 
-  <div class="col-md-6 card-spacing">
-    <div class="card">
+  <div class="col-md-4">
+    <div class="card mb-3">
       <img class="card-img-top" src="/static/images/cafecarousel.jpg" alt="Card image cap">
-        <div class="col-12 col-md-6">
+        <div class="col">
           <a href="{{ url_for('view_location', location_id=item_value['_id'] ) }}"><h4>{{ item_value.name }}</h4></a>
           <p>{{ item_value.address }}</p>
         </div>
@@ -34,6 +34,7 @@
   
 
 {% endfor %} 
+</div>
 
 {% endblock %}
 
