@@ -44,8 +44,44 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     map: map,
                     position: results[0].geometry.location
-
                 });
+                
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                        console.log("Hi");
+                        console.log(pos);
+
+
+                    /*infoWindow.setPosition(pos);
+                    infoWindow.setContent('Location found.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);*/
+                    }, 
+                    
+                    function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+                
+                return location;
+                    //console logging to make sure code is running.. 
+            }
+            else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+}
+
+
+/*
                 markers.push(marker);
 
                 marker.addListener('click', function() {
@@ -65,13 +101,4 @@ function initMap() {
 
                 /*selection.geolocation global variable - pass the lat and lng to the object declared at beginning of code*/
 
-                selection.geolocation = location;
-
-                return location;
-                //console logging to make sure code is running.. 
-            }
-            else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-}
+                /*selection.geolocation = location;*/
