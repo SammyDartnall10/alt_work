@@ -15,6 +15,16 @@
     <div class="col-12 col-md-6">
         <img class="img-fluid" src="/static/images/outsidecarousel.jpg">
     </div>
+
+    <div class="col-md-6">
+            <div id="map"></div>
+            <div>
+                <h5>Registered Business Address:</h5> 
+                <p id="companyCity">Toronto</p>
+                <p>Company country</p>
+            </div>
+            
+        </div>
 </div>
 
 <div class="row">
@@ -30,28 +40,28 @@
 </div>
 
 <div class="row">
-    <div class="col-3">
+    <div class="col-sm-3">
         <h6>Is there free (fast!) wifi?</h6>
         {% if location.wifi == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
         <h6>Are there places to plug in?</h6>
         {% if location.plugs == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
         <h6>Does it serve drinks?</h6>
         {% if location.drinks == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}
 
     </div>
-    <div class="col-3">
+    <div class="col-sm-3">
         <h6>Can I bring my dog(or cat, bird, whatever)?</h6>
         {% if location.pets_allowed == "on" %}
         <span>Yes</span> {% else %}
@@ -60,19 +70,22 @@
     </div>
 </div>
 
-<div class="col-12 ">
+<div class="row">
+    <div class="col-auto ">
         <h6>What kind of space is this Alt_location best for?</h6>
         <p>{{location.best_suited}}</p>
 </div>
+</div>
+
     
 <div class="row">
-    <div class="col-12 col-sm-4">
+    <div class="col-sm-3">
         <a class="btn btn-dark" href="{{url_for('edit_location', location_id=location._id)}}" role="button">Edit this Alt_location</a>
     </div>
-</div>
+
 <br>
-<div class="row">
-    <div class="col-12 col-sm-4">
+
+    <div class="col-sm-3">
         
         <!-- Button trigger modal -->
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Delete this Alt_location</button>
@@ -101,6 +114,7 @@
     </div>
 </div>
 <br>
+<div class="row">
 <div>
     <h3>Recent Reviews</h3>
 </div>
@@ -112,8 +126,9 @@
     <br> {% endfor %}
 </div>
 <br>
-<div class="col-12 col-sm-4">
+<div class="col-sm-4">
     <a class="btn btn-dark" href="{{url_for('add_review', location_id=location._id)}}" role="button">Add a review</a>
+</div>
 </div>
 
 {% endblock %}
