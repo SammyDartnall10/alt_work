@@ -127,3 +127,11 @@ body {
 .card-spacing{
   margin-top: 8vh;
 }
+
+/*-----------Need to give map height otherwise wont display correctly---------------------------------*/
+
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+ }
