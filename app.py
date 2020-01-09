@@ -6,10 +6,13 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 from bson.json_util import dumps
 from ast import literal_eval
+from os import path
+if path.exists("env.py"):
+    import env
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'projectThree'
-app.config["MONGO_URI"] = 'mongodb+srv://newuser:newuser@myfirstcluster-wrvet.mongodb.net/projectThree?retryWrites=true'
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
