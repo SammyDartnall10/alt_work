@@ -45,8 +45,11 @@ function initMap() {
                     map: map,
                     position: results[0].geometry.location
                 });
+                console.log(`Checking lat lng works ${location.lat} ${location.lng}`)
                 
                 // Try HTML5 geolocation.
+                var destination = {};
+            
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                     var pos = {
@@ -54,60 +57,18 @@ function initMap() {
                         lng: position.coords.longitude
                     };
                         console.log("Hi");
-                        console.log(pos);
+                        console.log(`your location is ${pos.lat} , ${pos.lng}`);
+                        return getDistance (location, pos);
                     }, 
                     
                     function() {
                     handleLocationError(true, infoWindow, map.getCenter());
                     });
+
+                    
                 } else {
                     // Browser doesn't support Geolocation
                     handleLocationError(false, infoWindow, map.getCenter());
-                }
-
-
-                /*---------Places API - Distances Matrix ------------------------------------------------*/
-
-                var origin1 = new google.maps.LatLng(55.930385, -3.118425);
-                
-                var destinationA = new google.maps.LatLng(50.087692, 14.421150);
-               
-
-                var service = new google.maps.DistanceMatrixService();
-                service.getDistanceMatrix(
-                {
-                    origins: [origin1],
-                    destinations: [destinationA],
-                    travelMode: 'DRIVING',
-                    unitSystem: google.maps.UnitSystem.METRIC,
-                    avoidHighways: false,
-                    avoidTolls: false
-                }, callback);
-
-
-                function callback(response, status) {
-                // See Parsing the Results for
-                // the basics of a callback function.
-
-                    if (status == 'OK') {
-                    var origins = response.originAddresses;
-                    console.log(origins)
-                    var destinations = response.destinationAddresses;
-                    console.log(destinations)
-                
-                    for (var i = 0; i < origins.length; i++) {
-                        var results = response.rows[i].elements;
-                        for (var j = 0; j < results.length; j++) {
-                        var element = results[j];
-                        var distance = element.distance.text;
-                        console.log(distance)
-                        var duration = element.duration.text;
-                        console.log(duration)
-                        var from = origins[i];
-                        var to = destinations[j];
-                        }
-                    }
-                    }
                 }
                 
                 return location;
@@ -119,7 +80,54 @@ function initMap() {
         });
 }
 
+function getDistance (location, pos) {
+    /*---------Places API - Distances Matrix ------------------------------------------------*/
+    console.log(`This is pos in the getDistance funct ${pos.lat} , ${pos.lng}`);
 
+    var origin1 = new google.maps.LatLng(location.lat, location.lng);
+                
+    var destinationA = new google.maps.LatLng(pos.lat, pos.lng);
+   
+
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+    {
+        origins: [origin1],
+        destinations: [destinationA],
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false
+    }, callback);
+
+
+    function callback(response, status) {
+    // See Parsing the Results for
+    // the basics of a callback function.
+
+        if (status == 'OK') {
+        var origins = response.originAddresses;
+        console.log(origins)
+        var destinations = response.destinationAddresses;
+        console.log(destinations)
+    
+        for (var i = 0; i < origins.length; i++) {
+            var results = response.rows[i].elements;
+            for (var j = 0; j < results.length; j++) {
+            var element = results[j];
+            var distance = element.distance.text;
+            console.log(distance)
+            var duration = element.duration.text;
+            console.log(duration)
+            var from = origins[i];
+            var to = destinations[j];
+            }
+        }
+        var setContent = document.getElementById('distance')
+        setContent.innerHTML = distance;
+    }
+}
+}
 
 
 
