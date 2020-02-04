@@ -1,28 +1,113 @@
 #!/usr/bin/env python3
-
 import os
-from flask import Flask, render_template, redirect, request, url_for
+import random
+import re
+from flask import (Flask,
+    Blueprint, render_template, redirect,
+    request, url_for, flash, session, Markup)
 from flask_pymongo import PyMongo
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_mongoengine import MongoEngine, Document
+from flask_wtf import FlaskForm
+from flask_httpauth import HTTPBasicAuth
+from wtforms import StringField, PasswordField
+from wtforms.validators import Email, Length, InputRequired
+from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId 
 from bson.json_util import dumps
 from ast import literal_eval
+
 from os import path
 if path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+
+"""MongoDB - setting env variables"""
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
+
+#Login Functinonality -----------------------------------------------------------#
+db = MongoEngine(app)
+app.config['SECRET_KEY'] = 'SupersecretsecretKey'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+
+class User(UserMixin, db.Document):
+    meta = {'collection': 'users'}
+    email = db.StringField(max_length=30)
+    password = db.StringField()
+
+class RegForm(FlaskForm):
+    email = StringField('email',  validators=[InputRequired(), Email(message='Invalid email'), Length(max=30)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=20)])
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.objects(pk=user_id).first()
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegForm()
+    if request.method == 'POST':
+        print("method is POST")
+        if form.validate():
+            print("Form is valid")
+            existing_user = User.objects(email=form.email.data).first()
+            if existing_user is None:
+                print("new user recognised")
+                hashpass = generate_password_hash(form.password.data, method='sha256')
+                print("password created")
+                hey = User(email=form.email.data,password=hashpass).save()
+                print(hey)
+                login_user(hey)
+                return redirect(url_for('dashboard'))
+            else: 
+              print("user already exists")
+        else: 
+          print("form not valid")
+    return render_template('register.html', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated == True:
+        return redirect(url_for('dashboard'))
+    form = RegForm()
+    if request.method == 'POST':
+        if form.validate():
+            check_user = User.objects(email=form.email.data).first()
+            if check_user:
+                if check_password_hash(check_user['password'], form.password.data):
+                    login_user(check_user)
+                    return redirect(url_for('dashboard'))
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout', methods = ['GET'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', name=current_user.email)
+
+#End of Login Functionality -----------------------------------------------------#
+
 
 """landing page/home"""
 @app.route('/')
 
 @app.route('/index')
 def landing_page():
-    return render_template("landingpage.html",
-    users=mongo.db.users.find())
+    return render_template("landingpage.html" )
 
 """show all records in a grid - user can then filter by category etc"""     
 @app.route('/view_all')
@@ -91,10 +176,10 @@ def filteredregion():
 """add a new record for location - opens a form"""    
 @app.route('/add_new')
 def add_new():
-    return render_template('newlocation.html',
     regions=mongo.db.region.find(),
     suited=mongo.db.best_suited.find(),
-    loc_type=mongo.db.location_type.find())
+    loc_type=mongo.db.location_type.find()
+    return render_template('newlocation.html', regions=regions, suited=suited, loc_type=loc_type)
     
 """form thats opened when /add_new called""" 
 @app.route('/new_location', methods=['POST'])
@@ -138,7 +223,8 @@ def update_location(location_id):
         'offers':request.form.get('offers'),
         'photos':request.form.get('photos'),
         'rating': int(request.form['rating']),
-        'description':request.form.get('description')
+        'description':request.form.get('description'),
+        'city':request.form.get('city'),
     })
     
     return redirect(url_for('view_all'))

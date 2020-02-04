@@ -1,3 +1,5 @@
+const apiKey = 'AIzaSyBY0nEpb-qc6dxAR0UfKi1LnB0NU42uA70';
+
 
 $(".dropdown-search").on("click", function() {
     var location = document.getElementById('type-select').value;
@@ -24,15 +26,19 @@ function initMap() {
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     
+    var input = document.getElementById("companyAddress");
+        var streetAddress = input.innerHTML;
     var input = document.getElementById("companyCity");
         var city = input.innerHTML;
-        
+    var fullAddress = streetAddress + city;   
+
+        console.log(streetAddress);
         console.log(city);
         console.log("started map function");
 
         /*geocoding API from Google */
 
-        geocoder.geocode({ 'address': city }, function(results, status) {
+        geocoder.geocode({ 'address': fullAddress }, function(results, status) {
 
             if (status == 'OK') {
                 var location = {};
@@ -48,7 +54,6 @@ function initMap() {
                 console.log(`Checking lat lng works ${location.lat} ${location.lng}`)
                 
                 // Try HTML5 geolocation.
-                var destination = {};
             
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
@@ -58,7 +63,9 @@ function initMap() {
                     };
                         console.log("Hi");
                         console.log(`your location is ${pos.lat} , ${pos.lng}`);
-                        return getDistance (location, pos);
+                        //Call the getDistance function- pass location and pos 
+                        getDistance (location, pos);
+                        return; 
                     }, 
                     
                     function() {
@@ -79,7 +86,7 @@ function initMap() {
             }
         });
 }
-
+//Get distance from current location. Returns an object, can then use drivig directions, etc. 
 function getDistance (location, pos) {
     /*---------Places API - Distances Matrix ------------------------------------------------*/
     console.log(`This is pos in the getDistance funct ${pos.lat} , ${pos.lng}`);
@@ -110,7 +117,8 @@ function getDistance (location, pos) {
         console.log(origins)
         var destinations = response.destinationAddresses;
         console.log(destinations)
-    
+        
+        //Can just take distance from the object, so its a little bit quicker
         for (var i = 0; i < origins.length; i++) {
             var results = response.rows[i].elements;
             for (var j = 0; j < results.length; j++) {
@@ -123,6 +131,7 @@ function getDistance (location, pos) {
             var to = destinations[j];
             }
         }
+        //Display the returned distance in the HTML element on the location page. 
         var setContent = document.getElementById('distance')
         setContent.innerHTML = distance;
     }

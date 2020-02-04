@@ -20,8 +20,9 @@
             <div id="map"></div>
             <div>
                 <h5>Registered Business Address:</h5> 
-                <span id="companyCity">Toronto</span>
-                <span>Distance: </span><span id="distance"></span>
+                <span id="companyAddress">{{location.address}}</span>
+                <span id="companyCity">{{location.city}}</span>
+                <span id="distance"></span>
             </div>
             
         </div>
@@ -29,7 +30,7 @@
 
 <div class="row">
     <div class="col-12 ">
-        <h3>{{location.address}}</h3>
+        <h3 >{{location.address}}</h3>
     </div>
 
     {% include 'starrating.html' %}
@@ -55,7 +56,7 @@
 
     </div>
     <div class="col-sm-3">
-        <h6>Does it serve drinks?</h6>
+        <h6>Does it serve refreshments?</h6>
         {% if location.drinks == "on" %}
         <span>Yes</span> {% else %}
         <span>No</span> {% endif %}

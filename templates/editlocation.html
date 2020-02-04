@@ -13,15 +13,22 @@
             </div>
         </div>
         <div class="col-md-4 mb-3" required>
-            <label for="validationServer01">Short address</label>
+            <label for="validationServer01">Street Dddress</label>
             <input type="text" class="form-control is-valid" id="address" placeholder="{{location.address}}" value="{{location.address}}" name="address" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">City</label>
+            <input type="text" class="form-control is-valid" id="address" placeholder="{{location.city}}" value="{{location.city}}" name="address" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
         <select class="custom-select" name="region" required>
             <option value="" >Which region is it in?</option>
             
@@ -36,7 +43,7 @@
         </select>
 
         <div class="invalid-feedback">Please select a location type</div>
-    </div>
+    </div>-->
 
     <div class="form-group">
         <div class="custom-control custom-checkbox mb-3">

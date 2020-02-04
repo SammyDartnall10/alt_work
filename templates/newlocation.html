@@ -6,18 +6,23 @@
 
     <div class="form-row">
         <div class="col-md-4 mb-3" required>
-            <label for="validationServer01">Name of new Alt_location</label>
+            <label for="name">Name of new Alt_location</label>
             <input type="text" class="form-control is-valid" id="name" placeholder="New Alt_location" value="name" name="name" required>
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-4 mb-3" required>
-            <label for="validationServer01">Short address</label>
+            <label for="address">Street address</label>
             <input type="text" class="form-control is-valid" id="address" placeholder="Address" value="address" name="address" required>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="col-md-4 mb-3" required>
+            <label for="city">City</label>
+            <input type="text" class="form-control is-valid" id="city" placeholder="City" value="city" name="city" required>
             <div class="invalid-feedback"></div>
         </div>
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
         <select class="custom-select" name="region" required>
             <option value="">Which region is it in?</option>
                 {% for region in regions %}
@@ -25,7 +30,7 @@
                 {% endfor %}
         </select>
         <div class="invalid-feedback">Please select a location type</div>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <div class="custom-control custom-checkbox mb-3">
