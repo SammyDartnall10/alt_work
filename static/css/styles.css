@@ -1,31 +1,137 @@
-#enter_username {
-  width: 45%;
-  top: calc(50% - 100px);
-  /* 100px is half the height..*/
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+h1 {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  font-family: 'Major Mono Display', monospace;
+}
+
+h2{
+  margin-top: 35px;
+  margin-bottom: 20px;
+  font-family: 'Major Mono Display', monospace;
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px
+}
+
+h5 {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  font-family: 'Major Mono Display', monospace;
 
 }
 
-/*.star-rating {
-  line-height:32px;
-  font-size:1.25em;
-}*/
+h6 {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: underline;
+  margin-top: 20px
+}
 
-/*.star-rating .fa-star{color: yellow;}*/
+li {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  color: grey;
+}
+
+a:hover {
+  color: #ff0dbf;
+}
+
+.btn {
+  margin-top: 20px
+}
+
+#form-content {
+  background-color: #ffeffa;
+  padding: 30px;
+}
+
+img {
+  vertical-align: bottom
+}
 
 .resize {
   max-width: 850px;
   max-height: 350px;
   width: 850px;
-  height: 350px;
+  height: auto;
 }
 
 .landing-page{
-  background: url('/static/images/pencils.jpg') no-repeat center center fixed;
+  background-color: grey;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100vh;
+  width: 100vw;
+ }
+
+.landing-page-link-top{
+  padding-right: 100px;
+  padding-top: 20px;
+}
+
+.quarters{
+  height: 45vh;
+  width: 45vw;
+  margin: 0;
+}
+
+.one{
+  background-image: url('/static/images/Alt.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.two{
+  background-color: white;
+}
+
+.three{
+  background-color: white;
+}
+
+.four{
+  background-image: url('/static/images/Work.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.border{
+  border-width: medium;
+  border-color: grey;
+}
+
+/*.navbar {
+  position: fixed
+}*/
+
+body {
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+}
+
+.footer {
+  margin-left: 8vw;
+  font-size: 1em;
+  color: grey;
+}
+
+.card-spacing{
+  margin-top: 8vh;
+}
+
+/*-----------Need to give map height otherwise wont display correctly---------------------------------*/
+
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
  }

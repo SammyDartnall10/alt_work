@@ -1,0 +1,28 @@
+{% extends 'base.html'%} {% block content %}
+
+<form action="{{ url_for('review_added', location_id=location._id) }}" method="POST">
+
+    <div class="form-row">
+        <div class="col-12" required>
+            <label for="validationServer01">What would you like to say about this location?</label>
+            <input type="text" class="form-control is-valid" id="review" placeholder="Reviews" value="Say something here about {{location.name}}" name="review" required>
+            <div class="valid-feedback">
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <label for="exampleFormControlSelect1">What would you rate this Alt_location out of 5? (1 awful, 5 fantastic)</label>
+            <select class="form-control" id="exampleFormControlSelect1" name='rating'>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <button class="btn btn-dark" type="submit">Add Review</button>
+
+</form>
+
+    {% endblock %}

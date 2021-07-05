@@ -1,34 +1,59 @@
-{% extends 'base.html'%} {% block content %} 
-
-
-
-<h1>Location</h1>
+{% extends 'base.html'%} {% block content %}
 
 <div class="row">
-    <div class="col">
-        <h2>{{location.name}}</h2>
+    <div class="col-6">
+        <h1>{{location.name}}</h1>
+    </div>
+    <div class="col-6">
+        <a href="{{url_for('view_all')}}">
+            <h5>Back to search</h5>
+        </a>
     </div>
 </div>
 
 <div class="row">
     <div class="col-12 col-md-6">
+<<<<<<< HEAD
         <img class="img-fluid" src="/static/images/cafeplaceholder.jpg">
+=======
+        <img class="img-fluid" src="/static/images/outsidecarousel.jpg">
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
     </div>
+
+    <div class="col-md-6">
+            <div id="map"></div>
+            <div>
+                <h5>Registered Business Address:</h5> 
+                <span id="companyAddress">{{location.address}}</span>
+                <span id="companyCity">{{location.city}}</span>
+                <span id="distance"></span>
+            </div>
+            
+        </div>
 </div>
 
 <div class="row">
     <div class="col-12 ">
+<<<<<<< HEAD
         <h3>{{location.address}}</h3>
+=======
+        <h3 >{{location.address}}</h3>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
     </div>
-    
+
     {% include 'starrating.html' %}
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
     <div class="col-12">
         <p>{{location.description}}</p>
     </div>
 </div>
 
 <div class="row">
+<<<<<<< HEAD
     <div class="col-3">
         <h4>Is there free (fast!) wifi?</h4>
         {% if location.wifi == "on"  %}
@@ -68,20 +93,97 @@
 </div>
 
 
-<div class="row">
-    <div class="col-12 col-sm-4">
-        <a class="btn btn-dark" href="{{url_for('edit_location', location_id=location._id)}}" role="button">Edit this Alt_location</a>
+=======
+    <div class="col-sm-3">
+        <h6>Is there free (fast!) wifi?</h6>
+        {% if location.wifi == "on" %}
+        <span>Yes</span> {% else %}
+        <span>No</span> {% endif %}
+
     </div>
-    <div class="col-12 col-sm-4">
-        <a class="btn btn-dark" href="{{url_for('add_new')}}" role="button">Add a new Alt_location</a>
+    <div class="col-sm-3">
+        <h6>Are there places to plug in?</h6>
+        {% if location.plugs == "on" %}
+        <span>Yes</span> {% else %}
+        <span>No</span> {% endif %}
+
     </div>
-     <div class="col-12 col-sm-4">
-        <a class="btn btn-dark" href="{{url_for('delete_location', location_id=location._id)}}" role="button">Delete this Alt_location</a>
+    <div class="col-sm-3">
+        <h6>Does it serve refreshments?</h6>
+        {% if location.drinks == "on" %}
+        <span>Yes</span> {% else %}
+        <span>No</span> {% endif %}
+
+    </div>
+    <div class="col-sm-3">
+        <h6>Can I bring my dog(or cat, bird, whatever)?</h6>
+        {% if location.pets_allowed == "on" %}
+        <span>Yes</span> {% else %}
+        <span>No</span> {% endif %}
+
     </div>
 </div>
 
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
+<div class="row">
+    <div class="col-auto ">
+        <h6>What kind of space is this Alt_location best for?</h6>
+        <p>{{location.best_suited}}</p>
+</div>
+</div>
 
+    
+<div class="row">
+    <div class="col-sm-3">
+        <a class="btn btn-dark" href="{{url_for('edit_location', location_id=location._id)}}" role="button">Edit this Alt_location</a>
+    </div>
 
+<br>
 
+    <div class="col-sm-3">
+        
+        <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Delete this Alt_location</button>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{location.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this Alt_location?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ooops- take me back!</button>
+                    <a id="delete_location" class="btn btn-dark" href="{{url_for('delete_location', location_id=location._id)}}" role="button">Delete this Alt_location</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+<div>
+    <h3>Recent Reviews</h3>
+</div>
+<div>
+    {% for review in location.reviews %}
+    <div>
+        {{ review }}
+    </div>
+    <br> {% endfor %}
+</div>
+<br>
+<div class="col-sm-4">
+    <a class="btn btn-dark" href="{{url_for('add_review', location_id=location._id)}}" role="button">Add a review</a>
+</div>
+</div>
 
- {% endblock %}
+{% endblock %}

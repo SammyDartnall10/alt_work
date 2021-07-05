@@ -1,5 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
+<<<<<<< HEAD
 <h1>Browse catergories</h1>
 
 <h2>Search results</h2>
@@ -62,3 +63,45 @@
 {% endfor %} 
  
 {% endblock %}
+=======
+<div class ="row">
+    <div class="col-6">
+        <h1>Results</h1>
+    </div>
+    <div class="col-6">
+        <a href="{{url_for('view_all')}}"><h5>Back to search</h5></a>
+    </div>
+    <div class="col-6">
+        <h6>Search Results : {{ count }}</h6>
+    </div>
+</div>
+<div>
+    <h1>{{ location }}</h1>
+</div>
+
+
+  <div class="row">  
+{% for item_value in summary %}
+
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <img class="card-img-top" src="/static/images/cafecarousel.jpg" alt="Card image cap">
+        <div class="col">
+          <a href="{{ url_for('view_location', location_id=item_value['_id'] ) }}"><h4>{{ item_value.name }}</h4></a>
+          <p>{{ item_value.address }}</p>
+        </div>
+        <div class="card-footer">
+            {% include 'stars.html' %}
+        </div>
+    </div>
+  </div>
+  
+
+{% endfor %} 
+</div>
+
+{% endblock %}
+
+-----------------------------------------------------------------------------------------
+
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc

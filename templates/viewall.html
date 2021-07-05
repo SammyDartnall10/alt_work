@@ -1,56 +1,23 @@
 {% extends 'base.html'%} {% block content %}
+<div>
+  <h2>Search by location type or region...</h2>
+</div>
 
-<h1>Browse catergories</h1>
-
-<h2>Browse by location type, or filter by feature</h2>
-
-<div class="bd-example">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../static/images/cafecarousel.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>See all Cafes</h5>
-          <p>Click here - or scroll for all catergories</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="../static/images/outsidecarousel.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>See all community spaces</h5>
-          <p>Click here - or scroll for all catergories</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="../static/images/restcarousel.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>See all restaurants & bars</h5>
-          <p>Click here - or scroll for all catergories</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="../static/images/libcarousel.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>See all libaries</h5>
-          <p>Click here - or scroll for all catergories</p>
-        </div>
-      </div>
+<div id="form-content">
+<form action="{{ url_for('filteredtype') }}" method="POST">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <label for="selectCategory">Search by Category</label>
+        <select class="custom-select type-select" id="type-select" name='type-select'>
+              <option>Select a Location type</option>
+                {% for location_type in loc_type %}
+              <option value="{{location_type.loc_type}}"> {{location_type.loc_type|title}}</option>
+                {% endfor %}
+        </select>
+            <input type="submit" id='submit' class='btn btn-dark type-search' value="Search" />
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
+<<<<<<< HEAD
 </div>
 
 <div>
@@ -111,3 +78,53 @@
 {% endfor %} 
  
 {% endblock %}
+=======
+</form>
+
+<br>
+<form action="{{ url_for('filteredregion') }}" method="POST">
+  <div class="row">
+    <div class="col-12 col-md-6">
+        <select class="custom-select" id="region-select" name='region-select'>
+              <option>Select a Region</option>
+                {% for regions in region %}
+              <option value="{{regions.area}}"> {{regions.area|title}}</option>
+                {% endfor %}
+        </select>
+          <input type="submit" id="region-search" class='btn btn-dark type-search' value="Search"/>
+    </div>
+  </div>
+</form>
+</div>
+
+<h2>...or see a selection of locations below</h2>
+
+{% for key, value in summary.items() %}
+<div class="row">
+  <div class="col-12">
+    <h1>{{ key }}</h1>
+  </div>
+  
+
+  {% for item_value in value %}
+  <div class="col-md-4">
+    <div class="card">
+      <img class="card-img-top" src="/static/images/cafeplaceholder.jpg" alt="Card image cap">
+      <div class="card-body">
+        <a href="{{ url_for('view_location', location_id=item_value['_id'] ) }}"><h5 class="card-title">{{ item_value["name"] }}</h5></a>
+        <p class="card-text">{{ item_value["address"] }}.</p>
+      </div>
+      <div class="card-footer">
+        {% include 'stars.html' %}
+      </div>
+  </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endfor %} 
+ 
+{% endblock %}
+
+
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc

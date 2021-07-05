@@ -13,30 +13,57 @@
             </div>
         </div>
         <div class="col-md-4 mb-3" required>
+<<<<<<< HEAD
             <label for="validationServer01">Short address</label>
+=======
+            <label for="validationServer01">Street Dddress</label>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
             <input type="text" class="form-control is-valid" id="address" placeholder="{{location.address}}" value="{{location.address}}" name="address" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+<<<<<<< HEAD
+    </div>
+
+    <div class="form-group">
+=======
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">City</label>
+            <input type="text" class="form-control is-valid" id="address" placeholder="{{location.city}}" value="{{location.city}}" name="address" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
         <select class="custom-select" name="region" required>
             <option value="" >Which region is it in?</option>
             
             {% for region in regions %}
                 {% if region.area == location.region %}
+<<<<<<< HEAD
                     <option value="{{region.area}}" selected >{{region.area}}</option>
                 {% else %}
                     <option value="{{region.area}}">{{region.area}}</option>
+=======
+                    <option value="{{region.area}}" selected >{{region.area|title}}</option>
+                {% else %}
+                    <option value="{{region.area}}">{{region.area|title}}</option>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
                 {% endif %}
             {% endfor %}
             
         </select>
 
         <div class="invalid-feedback">Please select a location type</div>
+<<<<<<< HEAD
     </div>
+=======
+    </div>-->
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
 
     <div class="form-group">
         <div class="custom-control custom-checkbox mb-3">
@@ -71,14 +98,24 @@
     </div>
 
     <div class="form-group">
+<<<<<<< HEAD
         <select class="custom-select" name="category">
+=======
+        <select class="custom-select" name="category" required>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
       <option value="">What kind of space is it?</option>
      
     {% for location_type in loc_type %}
         {% if location_type.loc_type == location.category %}
+<<<<<<< HEAD
         <option value="{{location_type.loc_type}}" selected>{{location_type.loc_type}}</option>
         {% else %}
         <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
+=======
+        <option value="{{location_type.loc_type}}" selected>{{location_type.loc_type|title}}</option>
+        {% else %}
+        <option value="{{location_type.loc_type}}">{{location_type.loc_type|title}}</option>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
         {% endif %}
     {% endfor %}
             </select>
@@ -86,6 +123,7 @@
     </div>
 
     <div class="form-group">
+<<<<<<< HEAD
         <select class="custom-select" name="best_suited">
       <option value="">What kind of work is it best for?</option>
     {% for best_suited in suited %}
@@ -93,6 +131,15 @@
         <option value="{{best_suited.suited}}" selected>{{best_suited.suited}}</option>
         {% else %}
         <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
+=======
+        <select class="custom-select" name="best_suited" required>
+      <option value="">What kind of work is it best for?</option>
+    {% for best_suited in suited %}
+        {% if best_suited.suited == location.best_suited %}
+        <option value="{{best_suited.suited}}" selected>{{best_suited.suited|title}}</option>
+        {% else %}
+        <option value="{{best_suited.suited}}">{{best_suited.suited|title}}</option>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
         {% endif %}
     {% endfor %}
     </select>
@@ -100,6 +147,7 @@
     </div>
 
     
+<<<<<<< HEAD
     <div class="mb-3">
         <label for="validationTextarea">Upload link to a photo...URLs only please</label>
         <textarea class="form-control is-invalid" id="validationTextarea" placeholder="{{location.photos}}" name="photos"></textarea>
@@ -107,6 +155,9 @@
             Please enter a valid URL
         </div>
     </div>
+=======
+    
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
 
     <div class="mb-3">
         <label for="validationTextarea">Please add a really descriptive description- itll help our users get a good idea of what the place is like!</label>
@@ -116,6 +167,7 @@
         </div>
     </div>
     
+<<<<<<< HEAD
       <div class="form-group">
     <label for="exampleFormControlSelect1">What would you rate this Alt_location out of 5? (1 awful, 5 fantastic)</label>
     <select class="form-control" id="exampleFormControlSelect1" name='rating'>
@@ -126,6 +178,18 @@
       <option>5</option>
     </select>
   </div>
+=======
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">What would you rate this Alt_location out of 5? (1 awful, 5 fantastic)</label>
+        <select class="form-control" id="exampleFormControlSelect1" name='rating' required>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
     
    
 
@@ -134,3 +198,7 @@
 </form>
 
 {% endblock %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdf6b1602baf92bd45385cb320ea216d023932cc
