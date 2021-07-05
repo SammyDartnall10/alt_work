@@ -12,35 +12,62 @@
 
 <div class="row">
     <div class="col-12 col-md-6">
-        <img class="img-fluid" src="{{location.photos}}">
+        <img class="img-fluid" src="/static/images/cafeplaceholder.jpg">
     </div>
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-6">
+    <div class="col-12 ">
         <h3>{{location.address}}</h3>
     </div>
     
     {% include 'starrating.html' %}
     
-    <div class="col-12 col-md-6">
+    <div class="col-12">
         <p>{{location.description}}</p>
     </div>
 </div>
+
 <div class="row">
     <div class="col-3">
-        <h2>{{location.wifi}}</h2>
+        <h4>Is there free (fast!) wifi?</h4>
+        {% if location.wifi == "on"  %}
+            <span>Yes</span> 
+        {% else %}
+            <span >No</span> 
+        {% endif %} 
+        
     </div>
     <div class="col-3">
-        <h2>{{location.plugs}}</h2>
+        <h4>Are there places to plug in?</h4>
+        {% if location.plugs == "on"  %}
+            <span>Yes</span> 
+        {% else %}
+            <span >No</span> 
+        {% endif %} 
+        
     </div>
     <div class="col-3">
-        <h2>{{location.drinks}}</h2>
+        <h4>Does it serve drinks?</h4>
+        {% if location.drinks == "on"  %}
+            <span>Yes</span> 
+        {% else %}
+            <span >No</span> 
+        {% endif %} 
+        
     </div>
     <div class="col-3">
-        <h2>{{location.pets_allowed}}</h2>
+        <h4>Can I bring my dog(or cat, bird, whatever)?</h4>
+        {% if location.pets_allowed == "on"  %}
+            <span>Yes</span> 
+        {% else %}
+            <span >No</span> 
+        {% endif %} 
+        
     </div>
 </div>
+
+
 <div class="row">
     <div class="col-12 col-sm-4">
         <a class="btn btn-dark" href="{{url_for('edit_location', location_id=location._id)}}" role="button">Edit this Alt_location</a>

@@ -1,0 +1,211 @@
+    """ {{location.name}}
+        {{location.address}}
+        {{location.region}}
+        {{location.category}}
+        {{location.best_suited}}
+        {{location.wifi}}
+        {{location.plugs}}
+        {{location.drinks}}
+        {{location.pets_allowed}}
+        {{location.offers}}
+        {{location.photos}} """"
+        
+        
+            <div class="input-field col s12">
+        <i class="material-icons prefix">poll</i>
+        <select id="category" name="category_name">
+                  <option value="" disabled selected>Please select a location type</option>
+                  {% for regions in region %}
+                      {{region.area}}
+                      <option value="{{cat.region}}">{{region.area}}</option>
+                  {% endfor %}
+                </select>
+        <label>Which region is it in?</label>
+    </div>
+
+    {% for regions in region %} {{region.area}} {% endfor %}
+    
+    
+------------------------------------------
+<div class="row">
+    <div class="col">
+        <h2>{{location.name}}</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <img class="img-fluid" src="{{location.photos}}">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <h3>{{location.address}}</h3>
+    </div>
+    <div class="col-12 col-md-6">
+        </h3>{{location.rating}}</h3>
+    </div>
+    <div class="col-12 col-md-6">
+        <p>{{location.description}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <h2>{{location.wifi}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.plugs}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.drinks}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.pets_allowed}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-sm-6">
+        <button>Edit this Alt_location</button>
+    </div>
+    <div class="col col-sm-6">
+        <a class="btn btn-dark" href="{{url_for('add_new')}}" role="button">Add a new Alt_location</a>
+        
+    </div>
+</div>
+
+------------------------------------------
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <img class="img-fluid" src="{{location.photos}}">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <h3>{{location.address}}</h3>
+    </div>
+    <div class="col-12 col-md-6">
+        </h3>{{location.rating}}</h3>
+    </div>
+    <div class="col-12 col-md-6">
+        <p>{{location.description}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <h2>{{location.wifi}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.plugs}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.drinks}}</h2>
+    </div>
+    <div class="col-3">
+        <h2>{{location.pets_allowed}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-sm-6">
+        <button>Edit this Alt_location</button>
+    </div>
+    <div class="col col-sm-6">
+        <a class="btn btn-dark" href="{{url_for('add_new')}}" role="button">Add a new Alt_location</a>
+        
+    </div>
+</div>
+
+---------------------------------------------------------------------
+
+    def get_votes_recipes():
+    rows = {}
+    try:
+        rows = mongo.db.recipes.find().sort('votes', -1).limit(3)
+    except:
+        # if there was an error access the db, then show friendly error page
+        return render_template("500.html")
+        
+        
+        
+---------------------------------------------------------------------
+#get rid of this... 
+def get_locations():
+    loc_types = {}
+    summary = {}
+    selection = {}
+   
+    try:
+        selection = dumps(mongo.db.location_type.find())
+        #print(type(selection))
+        #print (selection)
+        #loc_types = selection
+        #print (loc_types)
+   
+    
+        [{"_id": {"$oid": "5c9bd0851c9d44000016fda1"}, "loc_type": "cafe"},
+        {"_id": {"$oid": "5c9bd09a1c9d44000016fda2"}, "loc_type": "restaurant"}, 
+        {"_id": {"$oid": "5c9bd0b21c9d44000016fda3"}, "loc_type": "library"}, 
+        {"_id": {"$oid": "5c9bd0c61c9d44000016fda4"}, "loc_type": "community space"}]
+        
+    except:
+        print("error finding locations in step one")
+    
+        for locations in loc_types:
+            try:
+                summary = dumps(mongo.db.locations.find( { "loc_type": "loc_type" } ))
+                print("found summary")
+                return summary
+        
+            except:
+                return print("error finding locations")
+
+            if locations:
+                # return three locations
+                return locations
+
+get_locations()
+
+mongoimport --host myfirstcluster-shard-00-01-wrvet.mongodb.net:27017 --db projectThree --collection locations --type json --file locationdata.json --jsonArray --authenticationDatabase admin --ssl --username newuser --password newuser
+
+
+<div>
+  <h1>Top rated locations by type</h1>
+    {% for location_type in loc_type %}
+
+  <h1>{{location_type.loc_type}}</h1>
+
+      {% for location in summary %}
+      <h3>names of locations here x4</h3>
+    
+      <h3>{{location.name}}</h3>
+      {% endfor %}
+    
+    {% endfor %}
+</div>
+
+
+{% for location in location %}
+<div class="row">
+  <div class="col">
+    <h2><a href="{{url_for('view_location', location_id=location._id)}}">{{location.name}}</a></h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 resize">
+    <img class="img-fluid" src="{{location.photos}}">
+  </div>
+
+  <div class="col-12 col-md-6">
+    <h3>{{location.address}}</h3>
+  </div>
+
+  {% include 'starrating.html' %}
+</div>
+
+      <button id="dropdown_search" class="btn btn-dark" type="submit">Search</button>
+      
+      

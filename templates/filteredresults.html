@@ -1,0 +1,64 @@
+{% extends 'base.html'%} {% block content %}
+
+<h1>Browse catergories</h1>
+
+<h2>Search results</h2>
+
+
+<div>
+  <h1>Filter on Alt_work location type and region</h1>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6">
+    <label for="selectCategory">Search by Category</label>
+
+    <form method="POST">
+      <select class="custom-select type-select" id="type-select">
+            <option>Select a Location type</option>
+              {% for location_type in loc_type %}
+            <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
+              {% endfor %}
+          </select>
+
+      <select class="custom-select" id="region-select">
+            <option>Select a Region</option>
+              {% for regions in region %}
+            <option value="{{regions.area}}"> {{regions.area}}</option>
+              {% endfor %}
+          </select>
+
+      <button id="dropdown_search" class="btn btn-dark" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+{% for key, value in summary.items() %}
+<div class="row">
+  <div class="col">
+    <h1>{{ key }}</h1>
+  </div>
+</div>
+
+<div class="row">
+  {% for item_value in value %}
+  <a href="{{ url_for('view_location', location_id=item_value['_id'] ) }}"><h4>{{ item_value["name"] }}</h4></a>
+  <p>{{ item_value["address"] }}</p>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 resize">
+    <img class="img-fluid" src="/static/images/cafeplaceholder.jpg">
+  </div>
+  <div class = "row">
+    <div class = "col-md-6">
+    {% include 'stars.html' %}
+    </div>
+  </div>
+</div>
+
+
+{% endfor %} 
+{% endfor %} 
+ 
+{% endblock %}

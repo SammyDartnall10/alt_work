@@ -54,65 +54,60 @@
 </div>
 
 <div>
-    <h1>Filter on Alt_work location type and region</h1>
+  <h1>Filter on Alt_work location type and region</h1>
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-6">
-        <label for="selectCategory">Search by Category</label>
-        <form method="POST">
-          <select class="custom-select" id="category-select">
+  <div class="col-12 col-md-6">
+    <label for="selectCategory">Search by Category</label>
+    
+ 
+      <select class="custom-select type-select" id="type-select">
             <option>Select a Location type</option>
               {% for location_type in loc_type %}
             <option value="{{location_type.loc_type}}"> {{location_type.loc_type}}</option>
               {% endfor %}
           </select>
-                            
-          <select class="custom-select" id="category-select">
+
+      <select class="custom-select" id="region-select">
             <option>Select a Region</option>
               {% for regions in region %}
             <option value="{{regions.area}}"> {{regions.area}}</option>
               {% endfor %}
           </select>
-                            
-          <button class="btn btn-dark" type="submit">Search</button>
-        </form>
+
+      <button class="btn btn-dark dropdown-search" id="dropdown-search" >Search</button>
+
+  
+  </div>
+</div>
+
+{% for key, value in summary.items() %}
+<div class="row">
+  <div class="col">
+    <h1>{{ key }}</h1>
+  </div>
+</div>
+
+<div class="row">
+  {% for item_value in value %}
+  <a href="{{ url_for('view_location', location_id=item_value['_id'] ) }}"><h4>{{ item_value["name"] }}</h4></a>
+  <p>{{ item_value["address"] }}</p>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 resize">
+    <img class="img-fluid" src="/static/images/cafeplaceholder.jpg">
+  </div>
+  <div class = "row">
+    <div class = "col-md-6">
+    {% include 'stars.html' %}
     </div>
+  </div>
 </div>
 
 
-<div>
-  <h1>Top rated locations by type</h1>
-    {% for location_type in loc_type %}
-
-  <h1>{{location_type.loc_type}}</h1>
-
-      {% for location in summary %}
-      <h3>names of locations here x4</h3>
-    
-      <h3>{{location.name}}</h3>
-      {% endfor %}
-    
-    {% endfor %}
-</div>
-
-
-{% for location in location %}
-  <div class="row">
-    <div class="col">
-        <h2><a href="{{url_for('view_location', location_id=location._id)}}">{{location.name}}</a></h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 col-md-6 resize">
-        <img class="img-fluid" src="{{location.photos}}">
-    </div>
-
-    <div class="col-12 col-md-6">
-        <h3>{{location.address}}</h3>
-    </div>
-
-{% include 'starrating.html' %}
-  </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endfor %} 
+ 
+{% endblock %}

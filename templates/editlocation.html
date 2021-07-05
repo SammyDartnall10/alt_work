@@ -1,0 +1,136 @@
+{% extends 'base.html'%} {% block content %}
+
+<h1>This is where you edit a location</h1>
+
+<form class="was-validated" action="{{ url_for('update_location', location_id=location._id) }}" method="POST">
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">Name of new Alt_location</label>
+            <input type="text" class="form-control is-valid" id="name" placeholder="{{location.name}}" value="{{location.name}}" name="name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3" required>
+            <label for="validationServer01">Short address</label>
+            <input type="text" class="form-control is-valid" id="address" placeholder="{{location.address}}" value="{{location.address}}" name="address" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <select class="custom-select" name="region" required>
+            <option value="" >Which region is it in?</option>
+            
+            {% for region in regions %}
+                {% if region.area == location.region %}
+                    <option value="{{region.area}}" selected >{{region.area}}</option>
+                {% else %}
+                    <option value="{{region.area}}">{{region.area}}</option>
+                {% endif %}
+            {% endfor %}
+            
+        </select>
+
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    <div class="form-group">
+        <div class="custom-control custom-checkbox mb-3">
+            {% if location.wifi %}
+            <input type="checkbox" class="custom-control-input" id="wifi" name="wifi" checked>
+            <label class="custom-control-label" for="wifi">Wifi</label> {% else %}
+            <input type="checkbox" class="custom-control-input" id="wifi" name="wifi">
+            <label class="custom-control-label" for="wifi">Wifi</label> {% endif %}
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            {% if location.plugs %}
+            <input type="checkbox" class="custom-control-input" id="plugs" name="plugs" checked>
+            <label class="custom-control-label" for="plugs">Plugs</label> {% else %}
+            <input type="checkbox" class="custom-control-input" id="plugs" name="plugs">
+            <label class="custom-control-label" for="plugs">Plugs</label> {% endif %}
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            {% if location.drinks %}
+            <input type="checkbox" class="custom-control-input" id="drinks" name="drinks" checked>
+            <label class="custom-control-label" for="drinks">Drinks</label> {% else %}
+            <input type="checkbox" class="custom-control-input" id="drinks" name="drinks">
+            <label class="custom-control-label" for="drinks">Drinks</label> {% endif %}
+        </div>
+        <div class="custom-control custom-checkbox mb-3">
+            {% if location.pets_allowed %}
+            <input type="checkbox" class="custom-control-input" id="pets_allowed" name="pets_allowed" checked>
+            <label class="custom-control-label" for="pets_allowed">Pets Allowed</label> {% else %}
+            <input type="checkbox" class="custom-control-input" id="pets_allowed" name="pets_allowed">
+            <label class="custom-control-label" for="pets_allowed">Pets Allowed</label> {% endif %}
+        </div>
+        <div class="invalid-feedback">Example invalid feedback text</div>
+    </div>
+
+    <div class="form-group">
+        <select class="custom-select" name="category">
+      <option value="">What kind of space is it?</option>
+     
+    {% for location_type in loc_type %}
+        {% if location_type.loc_type == location.category %}
+        <option value="{{location_type.loc_type}}" selected>{{location_type.loc_type}}</option>
+        {% else %}
+        <option value="{{location_type.loc_type}}">{{location_type.loc_type}}</option>
+        {% endif %}
+    {% endfor %}
+            </select>
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    <div class="form-group">
+        <select class="custom-select" name="best_suited">
+      <option value="">What kind of work is it best for?</option>
+    {% for best_suited in suited %}
+        {% if best_suited.suited == location.best_suited %}
+        <option value="{{best_suited.suited}}" selected>{{best_suited.suited}}</option>
+        {% else %}
+        <option value="{{best_suited.suited}}">{{best_suited.suited}}</option>
+        {% endif %}
+    {% endfor %}
+    </select>
+        <div class="invalid-feedback">Please select a location type</div>
+    </div>
+
+    
+    <div class="mb-3">
+        <label for="validationTextarea">Upload link to a photo...URLs only please</label>
+        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="{{location.photos}}" name="photos"></textarea>
+        <div class="invalid-feedback">
+            Please enter a valid URL
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="validationTextarea">Please add a really descriptive description- itll help our users get a good idea of what the place is like!</label>
+        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="{{location.description}}" name="description"></textarea>
+        <div class="invalid-feedback">
+            Please enter a descripton in the box above.
+        </div>
+    </div>
+    
+      <div class="form-group">
+    <label for="exampleFormControlSelect1">What would you rate this Alt_location out of 5? (1 awful, 5 fantastic)</label>
+    <select class="form-control" id="exampleFormControlSelect1" name='rating'>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+    
+   
+
+    <button class="btn btn-dark" type="submit">Submit form</button>
+
+</form>
+
+{% endblock %}

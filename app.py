@@ -21,64 +21,34 @@ def landing_page():
 """show all records in a grid - user can then filter by category etc"""     
 @app.route('/view_all')
 def view_all():
-    summary = get_categories()
+    
+    loc_types = list(mongo.db.location_type.find())
+    summary = get_summary(loc_types)
+    print("Summary type is:", type(summary))
+    # for loop to see what each of the data types are
+    for key, value in summary.items():
+        print("\nLocation Type:", key)
+        #Value is currently a list
+        print("Key type is:", type(key))
+        print("Value type is:", type(value))
+        for item_set in value:
+            print("Item_set type is:", type(item_set))
+    
     return render_template("viewall.html",
-        location = mongo.db.locations.find(),
-        loc_type = mongo.db.location_type.find(),
-        region = mongo.db.region.find(),
+        location = list(mongo.db.locations.find()),
+        loc_type = loc_types,
+        region = list(mongo.db.region.find()),
         summary = summary)
-  
-def get_categories():
-    locations = {}
-    try:
-        # Query recipes collection and return ordered by _id descending
-        locations = [location for location in mongo.db.locations.find( { 'category': "cafe" } )]
-    except:
-        return print("error finding locations")
+            
 
-    if locations:
-        # return three locations
-        return locations
-        
-    return 
-
-
-def get_locations():
-    loc_types = {}
+def get_summary(loc_types):
     summary = {}
-    selection = {}
-   
-    try:
-        selection = dumps(mongo.db.location_type.find())
-        print(type(selection))
-        print (selection)
-        loc_types = selection
-        print (loc_types)
-   
-    
-        [{"_id": {"$oid": "5c9bd0851c9d44000016fda1"}, "loc_type": "cafe"},
-        {"_id": {"$oid": "5c9bd09a1c9d44000016fda2"}, "loc_type": "restaurant"}, 
-        {"_id": {"$oid": "5c9bd0b21c9d44000016fda3"}, "loc_type": "library"}, 
-        {"_id": {"$oid": "5c9bd0c61c9d44000016fda4"}, "loc_type": "community space"}]
-        
-    except:
-        print("error finding locations in step one")
-    
-        for locations in loc_types:
-            try:
-                summary = dumps(mongo.db.locations.find( { "loc_type": "loc_type" } ))
-                print("found summary")
-                return summary
-        
-            except:
-                return print("error finding locations")
+    for location_type in loc_types:
+        print(location_type)
+        summary[location_type['loc_type']] = [location for location in mongo.db.locations.find( { 'category': location_type['loc_type'] } )]
 
-            if locations:
-                # return three locations
-                return locations
-
-get_locations()
-  
+    return summary
+    
 @app.route('/location')
 def location():
     return render_template("location.html")
@@ -145,8 +115,14 @@ def cat_summary():
     """function that takes the loc_type eg cafe and finds places that match and then"""
     return """an array of 4 places"""
 
+@app.route('/filteredresults')
+def filteredresults():
+    return render_template("filteredresults.html")
+   
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
+            
+
